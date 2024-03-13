@@ -40,6 +40,7 @@
     <None Remove="Middleware\" />
     <None Remove="DTO\UserDTO\" />
     <None Remove="DTO\GuestAccessDTO\" />
+    <None Remove="DabaseBackupFile\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -54,5 +55,6 @@
     <Folder Include="Middleware\" />
     <Folder Include="DTO\UserDTO\" />
     <Folder Include="DTO\GuestAccessDTO\" />
+    <Folder Include="DabaseBackupFile\" />
   </ItemGroup>
 </Project>
