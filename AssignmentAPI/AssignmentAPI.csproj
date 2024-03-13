@@ -8,6 +8,51 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.27" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.27">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Json.Microsoft" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.27">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.35.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.27" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Models\" />
+    <None Remove="Shared\" />
+    <None Remove="DTO\" />
+    <None Remove="DTO\BuildingDTO\" />
+    <None Remove="DTO\LevelDTO\" />
+    <None Remove="DTO\RoomDTO\" />
+    <None Remove="DTO\VisitorsDTO\" />
+    <None Remove="Repository\" />
+    <None Remove="Interface\" />
+    <None Remove="Middleware\" />
+    <None Remove="DTO\UserDTO\" />
+    <None Remove="DTO\GuestAccessDTO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Shared\" />
+    <Folder Include="DTO\" />
+    <Folder Include="DTO\BuildingDTO\" />
+    <Folder Include="DTO\LevelDTO\" />
+    <Folder Include="DTO\RoomDTO\" />
+    <Folder Include="DTO\VisitorsDTO\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Interface\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="DTO\UserDTO\" />
+    <Folder Include="DTO\GuestAccessDTO\" />
+  </ItemGroup>
 </Project>
