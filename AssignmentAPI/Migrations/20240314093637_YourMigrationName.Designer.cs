@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AssignmentAPI.Migrations
 {
     [DbContext(typeof(AssignmentDBContext))]
-    [Migration("20240313071458_DbInit")]
-    partial class DbInit
+    [Migration("20240314093637_YourMigrationName")]
+    partial class YourMigrationName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
