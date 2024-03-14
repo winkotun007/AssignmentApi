@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using AssignmentAPI.Models;
+using Microsoft.Extensions.Hosting;
+
 namespace AssignmentAPI.Shared
 {
     public class AssignmentDBContext : DbContext
@@ -84,6 +86,43 @@ namespace AssignmentAPI.Shared
                     .HasForeignKey(e => e.RoomId)
                     .OnDelete(DeleteBehavior.Restrict);
             });
+
+
+
+            /// Seeding Data
+            ///
+            modelBuilder.Entity<UserModel>().HasData(
+                new UserModel { UserId = Guid.NewGuid().ToString(), UserName = "admin", FristName = "Win Ko", LastName = "Htun" ,Password= "SawMrF4MIPLybRhUuydNLnFedhTP2TqS", PasswordSalt= "17urfIO+0X9aVngltY8OCc7mJXkkFOqz" }
+            );
+
+            modelBuilder.Entity<BuildingModel>().HasData(
+                new BuildingModel { BuildingId = "1", BuildingCode = "Oscar", BuildingName = "Oscar"},
+                 new BuildingModel { BuildingId = "2", BuildingCode = "Hira", BuildingName = "Hira"}
+            );
+
+            modelBuilder.Entity<LevelModel>().HasData(
+                new LevelModel { LevelId = "1", LevelName = "Oscar", LevelCode = "Oscar", BuildingId = "1" },
+                 new LevelModel { LevelId = "2", LevelName = "Hira", LevelCode = "Hira", BuildingId = "2" }
+            );
+
+            modelBuilder.Entity<RoomModel>().HasData(
+                new RoomModel { RoomId = "1", RoomCode = "Oscar", RoomName = "Oscar" ,LevelId="1"},
+                 new RoomModel { RoomId = "2", RoomCode = "Hira", RoomName = "Hira" ,LevelId="2"}
+            );
+
+            modelBuilder.Entity<GuestAccessModel>().HasData(
+                new GuestAccessModel { GuestAccessId = "1",Path= "api/Rooms/GetRoomsByLevel",isGetAccess=true,isPostAccess=true,isPutAccess=true,isDeleteAccess=true },
+                new GuestAccessModel { GuestAccessId = "2", Path = "/swagger/index.html", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
+                new GuestAccessModel { GuestAccessId = "3", Path = "/api/User", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
+                new GuestAccessModel { GuestAccessId = "4", Path = "/api/Levels/GetLevelsByBuilding", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true},
+                new GuestAccessModel { GuestAccessId = "5", Path = "/api/Visitors", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true},
+                new GuestAccessModel { GuestAccessId = "6", Path = "/api/Rooms", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
+                new GuestAccessModel { GuestAccessId = "7", Path = "/api/Levels", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
+                new GuestAccessModel { GuestAccessId = "8", Path = "/api/Building", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
+                new GuestAccessModel { GuestAccessId = "9", Path = "/swagger/v1/swagger.json", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true},
+                new GuestAccessModel { GuestAccessId = "10", Path = "/api/User/UserLogin", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
+                new GuestAccessModel { GuestAccessId = "11", Path = "/api/Levels/GetLevelsByBuilding", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true }
+                );
 
 
             base.OnModelCreating(modelBuilder);
