@@ -24,16 +24,16 @@ namespace AssignmentAPI.Controllers
             _guestAcessRepository = guestAcessRepository;
         }
 
-        [HttpGet]
+        [HttpGet("GetGuestAccessByID")]
         public async Task<ActionResult<ResponseModel<IEnumerable<GuestAccessModel>>>> GetGuestAccesss()
         {
             return await _guestAcessRepository.GetGuestAccesssAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<GuestAccessModel>> GetGuestAccess(string id)
+        [HttpGet]
+        public async Task<ActionResult<GuestAccessModel>> GetGuestAccessByID(IDModel iDModel)
         {
-            return await _guestAcessRepository.GetGuestAccessByIdAsync(id);
+            return await _guestAcessRepository.GetGuestAccessByIdAsync(iDModel.Id);
         }
 
         [HttpPost]
@@ -42,16 +42,16 @@ namespace AssignmentAPI.Controllers
             return await _guestAcessRepository.CreateGuestAccessAsync(GuestAccessDTO);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<ResponseModel<GuestAccessModel>>> PutGuestAccess(string id, UpdateGuestAccessDTO updateGuestAccessDTO)
+        [HttpPut]
+        public async Task<ActionResult<ResponseModel<GuestAccessModel>>> PutGuestAccess(UpdateGuestAccessDTO updateGuestAccessDTO)
         {
-            return await _guestAcessRepository.UpdateGuestAccessAsync(id, updateGuestAccessDTO);
+            return await _guestAcessRepository.UpdateGuestAccessAsync(updateGuestAccessDTO.GuestAccessId, updateGuestAccessDTO);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGuestAccess(string id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteGuestAccess(IDModel iDModel)
         {
-            return await _guestAcessRepository.DeleteGuestAccessAsync(id);
+            return await _guestAcessRepository.DeleteGuestAccessAsync(iDModel.Id);
         }
 
     }

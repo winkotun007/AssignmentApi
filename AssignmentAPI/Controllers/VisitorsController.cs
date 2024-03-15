@@ -28,10 +28,10 @@ namespace AssignmentAPI.Controllers
             return await _visitorRepository.GetVisitorsAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<VisitorsModel>> GetVisitors(string id)
+        [HttpGet("GetVisitorByID")]
+        public async Task<ActionResult<VisitorsModel>> GetVisitorsByID(IDModel iDModel)
         {
-            return await _visitorRepository.GetVisitorsByIdAsync(id);
+            return await _visitorRepository.GetVisitorsByIdAsync(iDModel.Id);
         }
 
         [HttpPost]
@@ -40,16 +40,16 @@ namespace AssignmentAPI.Controllers
             return await _visitorRepository.CreateVisitorsAsync(VisitorsDTO);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<ResponseModel<VisitorsModel>>> PutVisitors(string id, UpdateVisitorsDTO updateVisitorsDTO)
+        [HttpPut]
+        public async Task<ActionResult<ResponseModel<VisitorsModel>>> PutVisitors(UpdateVisitorsDTO updateVisitorsDTO)
         {
-            return await _visitorRepository.UpdateVisitorsAsync(id, updateVisitorsDTO);
+            return await _visitorRepository.UpdateVisitorsAsync(updateVisitorsDTO.VisitorId, updateVisitorsDTO);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteVisitors(string id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteVisitors(IDModel iDModel)
         {
-            return await _visitorRepository.DeleteVisitorsAsync(id);
+            return await _visitorRepository.DeleteVisitorsAsync(iDModel.Id);
         }
     }
 }

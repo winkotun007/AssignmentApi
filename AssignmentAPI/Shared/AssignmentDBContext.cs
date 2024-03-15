@@ -101,13 +101,13 @@ namespace AssignmentAPI.Shared
             );
 
             modelBuilder.Entity<LevelModel>().HasData(
-                new LevelModel { LevelId = "1", LevelName = "Oscar", LevelCode = "Oscar", BuildingId = "1" },
-                 new LevelModel { LevelId = "2", LevelName = "Hira", LevelCode = "Hira", BuildingId = "2" }
+                new LevelModel { LevelId = "1", LevelName = "Level-1", LevelCode = "Level-1", BuildingId = "1" },
+                 new LevelModel { LevelId = "2", LevelName = "Level-2", LevelCode = "Level-2", BuildingId = "2" }
             );
 
             modelBuilder.Entity<RoomModel>().HasData(
-                new RoomModel { RoomId = "1", RoomCode = "Oscar", RoomName = "Oscar" ,LevelId="1"},
-                 new RoomModel { RoomId = "2", RoomCode = "Hira", RoomName = "Hira" ,LevelId="2"}
+                new RoomModel { RoomId = "1", RoomCode = "R-101", RoomName = "Oscar" ,LevelId="1"},
+                 new RoomModel { RoomId = "2", RoomCode = "R-201", RoomName = "Hira" ,LevelId="2"}
             );
 
             modelBuilder.Entity<GuestAccessModel>().HasData(
@@ -124,6 +124,10 @@ namespace AssignmentAPI.Shared
                 new GuestAccessModel { GuestAccessId = "11", Path = "/api/Levels/GetLevelsByBuilding", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true }
                 );
 
+            modelBuilder.Entity<VisitorsModel>().HasData(
+                new VisitorsModel { VisitorId="1",FirstName="win" ,LastName="ko Htun",NRICNumber="14/Test" ,PlateNumber="5H_000",CompanyName="TestCompany"
+                                    ,Designation= "Test De",BuildingId="1",LevelId="1",RoomId="1",isAcknowledged=true, isConfirmed14Day=false,isFever=false,isStayHomeNotice=false}
+                );
 
             base.OnModelCreating(modelBuilder);
         }

@@ -28,11 +28,11 @@ namespace AssignmentAPI.Controllers
         }
 
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<BuildingModel>> GetBuilding(string id)
+        [HttpGet("GetBuildingByID")]
+        public async Task<ActionResult<BuildingModel>> GetBuildingByID(IDModel iDModel)
         {
             _logger.LogInformation("Get Building By ID");
-            return await _buildingRepository.GetBuildingByIdAsync(id);
+            return await _buildingRepository.GetBuildingByIdAsync(iDModel.Id);
         }
 
         [HttpPost]
@@ -42,18 +42,18 @@ namespace AssignmentAPI.Controllers
             return await _buildingRepository.CreateBuildingAsync(buildingDTO);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<ResponseModel<BuildingModel>>> PutBuilding(string id,UpdateBuildDTO updateBuildDTO)
+        [HttpPut]
+        public async Task<ActionResult<ResponseModel<BuildingModel>>> PutBuilding(UpdateBuildDTO updateBuildDTO)
         {
             _logger.LogInformation("Update Existing Buidling.");
-            return await _buildingRepository.UpdateBuildingAsync(id, updateBuildDTO);
+            return await _buildingRepository.UpdateBuildingAsync(updateBuildDTO.BuildingId, updateBuildDTO);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBuilding(string id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteBuilding(IDModel iDModel)
         {
             _logger.LogInformation("Delete By Buidling ID.");
-            return await _buildingRepository.DeleteBuildingAsync(id);
+            return await _buildingRepository.DeleteBuildingAsync(iDModel.Id);
         }
     }
 }

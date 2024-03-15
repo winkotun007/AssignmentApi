@@ -30,17 +30,17 @@ namespace AssignmentAPI.Controllers
             return await _levelRepository.GetLevelsAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<LevelModel>> GetLevel(string id)
+        [HttpGet("GetLevelByID")]
+        public async Task<ActionResult<LevelModel>> GetLevelByID(IDModel iDModel)
         {
-            return await _levelRepository.GetLevelByIdAsync(id);
+            return await _levelRepository.GetLevelByIdAsync(iDModel.Id);
         }
 
-        [Route("GetLevelsByBuilding/{levelId}")]
-        [HttpGet]
-        public async Task<ActionResult<ResponseModel<IEnumerable<LevelModel>>>> GetLevelsByBuilding(string levelId)
+
+        [HttpPost("GetLevelsByBuilding")]
+        public async Task<ActionResult<ResponseModel<IEnumerable<LevelModel>>>> GetLevelsByBuilding(IDModel iDModel)
         {
-            return await _levelRepository.GetLevelByBuilding(levelId);
+            return await _levelRepository.GetLevelByBuilding(iDModel.Id);
         }
 
 
@@ -51,16 +51,16 @@ namespace AssignmentAPI.Controllers
             return await _levelRepository.CreateLevelAsync(levelDTO);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<ResponseModel<LevelModel>>> PutLevel(string id, UpdateLevelDTO updateLevelDTO)
+        [HttpPut]
+        public async Task<ActionResult<ResponseModel<LevelModel>>> PutLevel(UpdateLevelDTO updateLevelDTO)
         {
-            return await _levelRepository.UpdateLevelAsync(id,updateLevelDTO);
+            return await _levelRepository.UpdateLevelAsync(updateLevelDTO.BuildingId,updateLevelDTO);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLevel(string id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteLevel(IDModel iDModel)
         {
-            return await _levelRepository.DeleteLevelAsync(id);
+            return await _levelRepository.DeleteLevelAsync(iDModel.Id);
         }
 
     }

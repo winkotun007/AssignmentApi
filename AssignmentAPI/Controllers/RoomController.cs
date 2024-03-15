@@ -29,17 +29,16 @@ namespace AssignmentAPI.Controllers
             return await _roomRepository.GetRoomsAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<RoomModel>> GetRoom(string id)
+        [HttpGet("GetRoomByID")]
+        public async Task<ActionResult<RoomModel>> GetRoomByID(IDModel iDModel)
         {
-            return await _roomRepository.GetRoomByIdAsync(id);
+            return await _roomRepository.GetRoomByIdAsync(iDModel.Id);
         }
 
-        [Route("GetRoomsByLevel/{levelId}")]
-        [HttpGet]
-        public async Task<ActionResult<ResponseModel<IEnumerable<RoomModel>>>> GetRoomsByLevel(string levelId)
+        [HttpPost("GetRoomsByLevel")]
+        public async Task<ActionResult<ResponseModel<IEnumerable<RoomModel>>>> GetRoomsByLevel(IDModel iDModel)
         {
-            return await _roomRepository.GetRoomByLevel(levelId);
+            return await _roomRepository.GetRoomByLevel(iDModel.Id);
         }
 
 
@@ -50,16 +49,16 @@ namespace AssignmentAPI.Controllers
             return await _roomRepository.CreateRoomAsync(RoomDTO);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<ResponseModel<RoomModel>>> PutRoom(string id, UpdateRoomDTO updateRoomDTO)
+        [HttpPut]
+        public async Task<ActionResult<ResponseModel<RoomModel>>> PutRoom(UpdateRoomDTO updateRoomDTO)
         {
-            return await _roomRepository.UpdateRoomAsync(id, updateRoomDTO);
+            return await _roomRepository.UpdateRoomAsync(updateRoomDTO.RoomId, updateRoomDTO);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRoom(string id)
+        public async Task<IActionResult> DeleteRoom(IDModel iDModel)
         {
-            return await _roomRepository.DeleteRoomAsync(id);
+            return await _roomRepository.DeleteRoomAsync(iDModel.Id);
         }
     }
 }

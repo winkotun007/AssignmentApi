@@ -6,9 +6,9 @@ namespace AssignmentAPI.DTO.BuildingDTO
 {
     public class UpdateBuildDTO
     {
-        public string BuildingId { get; set; }
-        public string BuildingName { get; set; }
-        public string BuildingCode { get; set; }
+        public string? BuildingId { get; set; }
+        public string? BuildingName { get; set; }
+        public string? BuildingCode { get; set; }
     }
 
     public class BuildingUpdateDTOValidator : AbstractValidator<UpdateBuildDTO>

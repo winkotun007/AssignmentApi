@@ -20,7 +20,8 @@ namespace AssignmentAPI.Middleware
         private readonly RequestDelegate _next;
         private readonly JsonSerializerSettings _serializerSettings;
         private readonly IConfiguration _configuration;
-        public CustomMiddleware(RequestDelegate next, JsonSerializerSettings serializerSettings,IConfiguration configuration)
+        private readonly ILogger<CustomMiddleware> _logger;
+        public CustomMiddleware(RequestDelegate next, JsonSerializerSettings serializerSettings,IConfiguration configuration,ILogger<CustomMiddleware> logger)
         {
             _next = next;
             _serializerSettings = new JsonSerializerSettings
@@ -28,6 +29,7 @@ namespace AssignmentAPI.Middleware
                 Formatting = Formatting.Indented
             };
             _configuration = configuration;
+            _logger = logger;
         }
 
         public async Task Invoke(HttpContext httpContext,IGuestAcessRepository guestAcessRepository)
@@ -35,9 +37,13 @@ namespace AssignmentAPI.Middleware
             try
             {
 
-                bool isTrueAccess = false;
+                if (httpContext.Request.Method == "OPTIONS")
+                {
+                    await _next(httpContext);
+                    return;
+                }
 
-                
+                bool isTrueAccess = false;
 
                 if (!string.IsNullOrEmpty(httpContext.Request.Method))
                 {
@@ -66,8 +72,10 @@ namespace AssignmentAPI.Middleware
                 return;
 
             }
-            catch
+            catch(Exception ex)
             {
+                _logger.LogError(ex.Message.ToString());
+                string exmsg = ex.Message.ToString();
                 await ResponseMessage(new { status = "fail", data = "Method Not Allowed" }, httpContext, StatusCodes.Status405MethodNotAllowed);
             }
            await _next(httpContext);
@@ -107,8 +115,9 @@ namespace AssignmentAPI.Middleware
 
                 return true;
             }
-            catch (SecurityTokenValidationException)
+            catch (SecurityTokenValidationException ex)
             {
+                var exmee = ex.Message.ToString();
                 return false;
             }
             catch (Exception)

@@ -210,6 +210,63 @@ namespace AssignmentAPI.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.InsertData(
+                table: "Buildings",
+                columns: new[] { "BuildingId", "BuildingCode", "BuildingName", "CreatedBy", "CreatedDate", "UpdatedBy", "UpdatedDate" },
+                values: new object[,]
+                {
+                    { "1", "Oscar", "Oscar", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(220), "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(220) },
+                    { "2", "Hira", "Hira", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(230), "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(230) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "GuestAccess",
+                columns: new[] { "GuestAccessId", "CreatedBy", "CreatedDate", "Path", "UpdatedBy", "UpdatedDate", "isDeleteAccess", "isGetAccess", "isPostAccess", "isPutAccess" },
+                values: new object[,]
+                {
+                    { "1", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(280), "api/Rooms/GetRoomsByLevel", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(280), true, true, true, true },
+                    { "10", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(330), "/api/User/UserLogin", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(330), true, true, true, true },
+                    { "11", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(330), "/api/Levels/GetLevelsByBuilding", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(330), true, true, true, true },
+                    { "2", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290), "/swagger/index.html", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290), true, true, true, true },
+                    { "3", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290), "/api/User", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290), true, true, true, true },
+                    { "4", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290), "/api/Levels/GetLevelsByBuilding", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290), true, true, true, true },
+                    { "5", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(300), "/api/Visitors", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(300), true, true, true, true },
+                    { "6", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310), "/api/Rooms", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310), true, true, true, true },
+                    { "7", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310), "/api/Levels", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310), true, true, true, true },
+                    { "8", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310), "/api/Building", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310), true, true, true, true },
+                    { "9", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(320), "/swagger/v1/swagger.json", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(320), true, true, true, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "CreatedBy", "CreatedDate", "FristName", "LastName", "Password", "PasswordSalt", "UpdatedBy", "UpdatedDate", "UserName" },
+                values: new object[] { "b4f0b488-8487-45bd-b2c0-4316a8e23310", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(160), "Win Ko", "Htun", "SawMrF4MIPLybRhUuydNLnFedhTP2TqS", "17urfIO+0X9aVngltY8OCc7mJXkkFOqz", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(160), "admin" });
+
+            migrationBuilder.InsertData(
+                table: "levels",
+                columns: new[] { "LevelId", "BuildingId", "CreatedBy", "CreatedDate", "LevelCode", "LevelName", "UpdatedBy", "UpdatedDate" },
+                values: new object[] { "1", "1", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(240), "Level-1", "Level-1", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(240) });
+
+            migrationBuilder.InsertData(
+                table: "levels",
+                columns: new[] { "LevelId", "BuildingId", "CreatedBy", "CreatedDate", "LevelCode", "LevelName", "UpdatedBy", "UpdatedDate" },
+                values: new object[] { "2", "2", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(250), "Level-2", "Level-2", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(250) });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "RoomId", "CreatedBy", "CreatedDate", "LevelId", "RoomCode", "RoomName", "UpdatedBy", "UpdatedDate" },
+                values: new object[] { "1", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(260), "1", "R-101", "Oscar", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(260) });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "RoomId", "CreatedBy", "CreatedDate", "LevelId", "RoomCode", "RoomName", "UpdatedBy", "UpdatedDate" },
+                values: new object[] { "2", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(270), "2", "R-201", "Hira", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(270) });
+
+            migrationBuilder.InsertData(
+                table: "Visitors",
+                columns: new[] { "VisitorId", "BuildingId", "CompanyName", "CreatedBy", "CreatedDate", "Designation", "FirstName", "LastName", "LevelId", "NRICNumber", "PlateNumber", "RoomId", "UpdatedBy", "UpdatedDate", "isAcknowledged", "isConfirmed14Day", "isFever", "isStayHomeNotice" },
+                values: new object[] { "1", "1", "TestCompany", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(350), "Test De", "win", "ko Htun", "1", "14/Test", "5H_000", "1", "admin", new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(350), true, false, false, false });
+
             migrationBuilder.CreateIndex(
                 name: "IX_levels_BuildingId",
                 table: "levels",

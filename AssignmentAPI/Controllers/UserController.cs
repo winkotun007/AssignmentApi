@@ -29,10 +29,10 @@ namespace AssignmentAPI.Controllers
             return await _UserRepository.GetUsersAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UserModel>> GetUser(string id)
+        [HttpGet("GetUserByID")]
+        public async Task<ActionResult<UserModel>> GetUserByID(IDModel iDModel)
         {
-            return await _UserRepository.GetUserByIdAsync(id);
+            return await _UserRepository.GetUserByIdAsync(iDModel.Id);
         }
 
 
@@ -42,23 +42,22 @@ namespace AssignmentAPI.Controllers
             return await _UserRepository.CreateUserAsync(UserDTO);
         }
 
-        [Route("Userlogin")]
-        [HttpPost]
+        [HttpPost("Userlogin")]
         public async Task<ResponseModel<TokenResponseModel>> Userlogin(LoginUserDTO loginUserDTO)
         {
             return await _UserRepository.UserLoginChecker(loginUserDTO);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<ResponseModel<UserModel>>> PutUser(string id, UpdateUserDTO updateUserDTO)
+        [HttpPut]
+        public async Task<ActionResult<ResponseModel<UserModel>>> PutUser(UpdateUserDTO updateUserDTO)
         {
-            return await _UserRepository.UpdateUserAsync(id, updateUserDTO);
+            return await _UserRepository.UpdateUserAsync( updateUserDTO.UserId, updateUserDTO);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteUser(IDModel iDModel)
         {
-            return await _UserRepository.DeleteUserAsync(id);
+            return await _UserRepository.DeleteUserAsync(iDModel.Id);
         }
     }
 }

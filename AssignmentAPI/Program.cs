@@ -87,6 +87,7 @@ if (app.Environment.IsDevelopment())
 }
 //app.UseCors();            
 app.UseCors("*");
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
