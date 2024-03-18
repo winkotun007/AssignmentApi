@@ -43,6 +43,13 @@ namespace AssignmentAPI.Middleware
                     return;
                 }
 
+                if (httpContext.Request.Path.HasValue && httpContext.Request.Path.Value.Contains("swagger"))
+                {
+                    // Skip processing
+                    await _next(httpContext);
+                    return;
+                }
+
                 bool isTrueAccess = false;
 
                 if (!string.IsNullOrEmpty(httpContext.Request.Method))
