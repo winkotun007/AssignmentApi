@@ -36,7 +36,6 @@ namespace AssignmentAPI.Middleware
         {
             try
             {
-
                 if (httpContext.Request.Method == "OPTIONS")
                 {
                     await _next(httpContext);
