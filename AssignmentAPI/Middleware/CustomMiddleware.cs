@@ -75,8 +75,7 @@ namespace AssignmentAPI.Middleware
             catch(Exception ex)
             {
                 _logger.LogError(ex.Message.ToString());
-                string exmsg = ex.Message.ToString();
-                await ResponseMessage(new { status = "fail", data = "Method Not Allowed" }, httpContext, StatusCodes.Status405MethodNotAllowed);
+                await ResponseMessage(new { status = "fail", data = "Method Not Allowed"  }, httpContext, StatusCodes.Status405MethodNotAllowed);
             }
            await _next(httpContext);
             return;

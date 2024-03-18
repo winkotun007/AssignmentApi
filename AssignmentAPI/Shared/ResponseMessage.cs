@@ -16,6 +16,8 @@ namespace AssignmentAPI.Shared
 		public static readonly string WrongPassword = "Password is Wrong.";
 
 		public static readonly string UserNotFound = "User Not Found.";
+
+		public static readonly string DeleteSuccessful = "Delete Successful.";
 	}
 }
 

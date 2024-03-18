@@ -13,7 +13,7 @@ namespace AssignmentAPI.Interface
         Task<LevelModel> GetLevelByIdAsync(string id);
         Task<ResponseModel<LevelModel>> CreateLevelAsync(CreateLevelDTO levelDTO);
         Task<ResponseModel<LevelModel>> UpdateLevelAsync(string id, UpdateLevelDTO updateLevelDTO);
-        Task<IActionResult> DeleteLevelAsync(string id);
+        Task<ResponseDeleteModel> DeleteLevelAsync(string id);
         Task<ActionResult<ResponseModel<IEnumerable<LevelModel>>>> GetLevelByBuilding(string buildingId);
     }
 }

@@ -58,7 +58,7 @@ namespace AssignmentAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteLevel(IDModel iDModel)
+        public async Task<ResponseDeleteModel> DeleteLevel(IDModel iDModel)
         {
             return await _levelRepository.DeleteLevelAsync(iDModel.Id);
         }

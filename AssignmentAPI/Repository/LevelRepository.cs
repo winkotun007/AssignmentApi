@@ -153,18 +153,29 @@ namespace AssignmentAPI.Repository
             return responseModel;
         }
 
-        public async Task<IActionResult> DeleteLevelAsync(string id)
+        public async Task<ResponseDeleteModel> DeleteLevelAsync(string id)
         {
+            ResponseDeleteModel responseDeleteModel = new ResponseDeleteModel();
+
             var level = await _context.levels.FindAsync(id);
             if (level == null)
             {
-                return new NotFoundResult();
+                responseDeleteModel.Code = (int)HttpStatusCode.BadRequest;
+                responseDeleteModel.Message = ResponseMessage.NotFound;
+
+                return responseDeleteModel;
+
             }
 
             _context.levels.Remove(level);
+
             await _context.SaveChangesAsync();
 
-            return new NoContentResult();
+
+            responseDeleteModel.Code = (int)HttpStatusCode.OK;
+            responseDeleteModel.Message = ResponseMessage.DeleteSuccessful;
+
+            return responseDeleteModel;
         }
 
         private bool LevelExists(string id)

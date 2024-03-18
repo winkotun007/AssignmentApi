@@ -111,7 +111,7 @@ namespace AssignmentAPI.Shared
             );
 
             modelBuilder.Entity<GuestAccessModel>().HasData(
-                new GuestAccessModel { GuestAccessId = "1",Path= "api/Rooms/GetRoomsByLevel",isGetAccess=true,isPostAccess=true,isPutAccess=true,isDeleteAccess=true },
+                new GuestAccessModel { GuestAccessId = "1",Path= "/api/Rooms/GetRoomsByLevel",isGetAccess=true,isPostAccess=true,isPutAccess=true,isDeleteAccess=true },
                 new GuestAccessModel { GuestAccessId = "2", Path = "/swagger/index.html", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
                 new GuestAccessModel { GuestAccessId = "3", Path = "/api/User", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
                 new GuestAccessModel { GuestAccessId = "4", Path = "/api/Levels/GetLevelsByBuilding", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true},
