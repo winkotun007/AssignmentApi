@@ -12,7 +12,7 @@ namespace AssignmentAPI.Interface
         Task<VisitorsModel> GetVisitorsByIdAsync(string id);
         Task<ResponseModel<VisitorsModel>> CreateVisitorsAsync(CreateVisitorsDTO visitorsDTO);
         Task<ResponseModel<VisitorsModel>> UpdateVisitorsAsync(string id, UpdateVisitorsDTO updateVisitorsDTO);
-        Task<IActionResult> DeleteVisitorsAsync(string id);
+        Task<ActionResult<ResponseModel<VisitorsModel>>> DeleteVisitorsAsync(string id);
     }
 }
 

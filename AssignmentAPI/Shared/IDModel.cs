@@ -12,7 +12,7 @@ namespace AssignmentAPI.Shared
     {
         public BuildingUpdateDTOValidator()
         {
-            RuleFor(x => x.Id).NotNull().NotEmpty().MaximumLength(255).WithMessage("ID  is required.");
+            RuleFor(x => x.Id).NotNull().NotEmpty().MaximumLength(255).WithMessage("ID WKH  is required.");
         }
     }
 }

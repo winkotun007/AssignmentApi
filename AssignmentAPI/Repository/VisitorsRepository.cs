@@ -158,18 +158,38 @@ namespace AssignmentAPI.Repository
             return responseModel;
         }
 
-        public async Task<IActionResult> DeleteVisitorsAsync(string id)
+        public async Task<ActionResult<ResponseModel<VisitorsModel>>> DeleteVisitorsAsync(string id)
         {
-            var Visitors = await _context.Visitors.FindAsync(id);
-            if (Visitors == null)
+            ResponseModel<VisitorsModel> responseModel = new ResponseModel<VisitorsModel>();
+
+            try
             {
-                return new NotFoundResult();
+                var Visitors = await _context.Visitors.FindAsync(id);
+
+
+                if (Visitors == null)
+                {
+                    responseModel.Code = (int)HttpStatusCode.NoContent;
+                    responseModel.Data = null;
+                    responseModel.Message = ResponseMessage.NotFound;
+                    return responseModel;
+                }
+
+                _context.Visitors.Remove(Visitors);
+                await _context.SaveChangesAsync();
+
+                responseModel.Code = (int)HttpStatusCode.OK;
+                responseModel.Message = ResponseMessage.DeleteSuccessful;
+                responseModel.Data = null;
+                return responseModel;
             }
-
-            _context.Visitors.Remove(Visitors);
-            await _context.SaveChangesAsync();
-
-            return new NoContentResult();
+            catch (Exception)
+            {
+                responseModel.Code = (int)HttpStatusCode.InternalServerError;
+                responseModel.Message = ResponseMessage.InternalServerError;
+                responseModel.Data = null;
+            }
+            return responseModel;
         }
 
         private bool VisitorsExists(string id)

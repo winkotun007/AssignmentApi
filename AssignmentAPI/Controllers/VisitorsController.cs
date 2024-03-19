@@ -28,7 +28,7 @@ namespace AssignmentAPI.Controllers
             return await _visitorRepository.GetVisitorsAsync();
         }
 
-        [HttpGet("GetVisitorByID")]
+        [HttpPost("GetVisitorByID")]
         public async Task<ActionResult<VisitorsModel>> GetVisitorsByID(IDModel iDModel)
         {
             return await _visitorRepository.GetVisitorsByIdAsync(iDModel.Id);
@@ -47,7 +47,7 @@ namespace AssignmentAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteVisitors(IDModel iDModel)
+        public async Task<ActionResult<ResponseModel<VisitorsModel>>> DeleteVisitors(IDModel iDModel)
         {
             return await _visitorRepository.DeleteVisitorsAsync(iDModel.Id);
         }
