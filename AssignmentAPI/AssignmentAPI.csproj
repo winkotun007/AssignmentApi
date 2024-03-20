@@ -41,10 +41,11 @@
     <None Remove="DTO\VisitorsDTO\" />
     <None Remove="Repository\" />
     <None Remove="Interface\" />
-    <None Remove="Middleware\" />
     <None Remove="DTO\UserDTO\" />
     <None Remove="DTO\GuestAccessDTO\" />
     <None Remove="DabaseBackupFile\" />
+    <None Remove="DTO\CategoryDTO\" />
+    <None Remove="Middleware\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -56,9 +57,10 @@
     <Folder Include="DTO\VisitorsDTO\" />
     <Folder Include="Repository\" />
     <Folder Include="Interface\" />
-    <Folder Include="Middleware\" />
     <Folder Include="DTO\UserDTO\" />
     <Folder Include="DTO\GuestAccessDTO\" />
     <Folder Include="DabaseBackupFile\" />
+    <Folder Include="DTO\CategoryDTO\" />
+    <Folder Include="Middleware\" />
   </ItemGroup>
 </Project>

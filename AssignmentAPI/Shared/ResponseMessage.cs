@@ -18,6 +18,8 @@ namespace AssignmentAPI.Shared
 		public static readonly string UserNotFound = "User Not Found.";
 
 		public static readonly string DeleteSuccessful = "Delete Successful.";
+
+		public static readonly string GetSuccessfull = "Get Successful";
 	}
 }
 

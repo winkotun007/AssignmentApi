@@ -6,6 +6,7 @@ using AssignmentAPI.DTO.RoomDTO;
 using AssignmentAPI.DTO.VisitorsDTO;
 using AssignmentAPI.DTO.UserDTO;
 using AssignmentAPI.DTO.GuestAccessDTO;
+using AssignmentAPI.DTO.CategoryDTO;
 using AssignmentAPI.Models;
 public class MappingProfile : Profile
 {
@@ -22,5 +23,9 @@ public class MappingProfile : Profile
         CreateMap<CreateGuestAccessDTO, GuestAccessModel>().ReverseMap();
         CreateMap<UpdateGuestAccessDTO, GuestAccessModel>().ReverseMap();
         CreateMap<GetVisitorsDTO, VisitorsModel>().ReverseMap();
+        CreateMap<UpdateCategoryDTO, CategoryModel>().ReverseMap();
+        CreateMap<CreateCategoryDTO, CategoryModel>().ReverseMap();
+        CreateMap<CategoryModel, TreeNode>()
+           .ForMember(dest => dest.children, opt => opt.MapFrom(src => src.ChildCategories));
     }
 }

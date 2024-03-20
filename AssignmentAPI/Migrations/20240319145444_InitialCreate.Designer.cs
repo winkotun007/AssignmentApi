@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AssignmentAPI.Migrations
 {
     [DbContext(typeof(AssignmentDBContext))]
-    [Migration("20240314122221_YourMigrationName")]
-    partial class YourMigrationName
+    [Migration("20240319145444_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,9 +56,9 @@ namespace AssignmentAPI.Migrations
                             BuildingCode = "Oscar",
                             BuildingName = "Oscar",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(220),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9150),
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(220)
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9150)
                         },
                         new
                         {
@@ -66,10 +66,44 @@ namespace AssignmentAPI.Migrations
                             BuildingCode = "Hira",
                             BuildingName = "Hira",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(230),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9160),
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(230)
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9160)
                         });
+                });
+
+            modelBuilder.Entity("AssignmentAPI.Models.CategoryModel", b =>
+                {
+                    b.Property<string>("CategoryId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("CategoryCode")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ParentCategoryId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("CategoryId")
+                        .HasName("PRIMARY");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("AssignmentAPI.Models.GuestAccessModel", b =>
@@ -114,10 +148,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "1",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(280),
-                            Path = "api/Rooms/GetRoomsByLevel",
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9210),
+                            Path = "/api/Rooms/GetRoomsByLevel",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(280),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9210),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -127,10 +161,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "2",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9220),
                             Path = "/swagger/index.html",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9220),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -140,10 +174,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "3",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9220),
                             Path = "/api/User",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9220),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -153,10 +187,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "4",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9230),
                             Path = "/api/Levels/GetLevelsByBuilding",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(290),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9230),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -166,10 +200,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "5",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(300),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9230),
                             Path = "/api/Visitors",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(300),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9230),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -179,10 +213,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "6",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9240),
                             Path = "/api/Rooms",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9240),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -192,10 +226,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "7",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9240),
                             Path = "/api/Levels",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9240),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -205,10 +239,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "8",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9250),
                             Path = "/api/Building",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(310),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9250),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -218,10 +252,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "9",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(320),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9250),
                             Path = "/swagger/v1/swagger.json",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(320),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9250),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -231,10 +265,10 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "10",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(330),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9260),
                             Path = "/api/User/UserLogin",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(330),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9260),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -244,10 +278,36 @@ namespace AssignmentAPI.Migrations
                         {
                             GuestAccessId = "11",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(330),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9260),
                             Path = "/api/Levels/GetLevelsByBuilding",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(330),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9260),
+                            isDeleteAccess = true,
+                            isGetAccess = true,
+                            isPostAccess = true,
+                            isPutAccess = true
+                        },
+                        new
+                        {
+                            GuestAccessId = "12",
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9270),
+                            Path = "/swagger/swagger-ui.css",
+                            UpdatedBy = "admin",
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9270),
+                            isDeleteAccess = true,
+                            isGetAccess = true,
+                            isPostAccess = true,
+                            isPutAccess = true
+                        },
+                        new
+                        {
+                            GuestAccessId = "13",
+                            CreatedBy = "admin",
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9280),
+                            Path = "/swagger/swagger-ui-bundle.js",
+                            UpdatedBy = "admin",
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9280),
                             isDeleteAccess = true,
                             isGetAccess = true,
                             isPostAccess = true,
@@ -294,22 +354,22 @@ namespace AssignmentAPI.Migrations
                             LevelId = "1",
                             BuildingId = "1",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(240),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9170),
                             LevelCode = "Level-1",
                             LevelName = "Level-1",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(240)
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9170)
                         },
                         new
                         {
                             LevelId = "2",
                             BuildingId = "2",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(250),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9180),
                             LevelCode = "Level-2",
                             LevelName = "Level-2",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(250)
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9180)
                         });
                 });
 
@@ -351,23 +411,23 @@ namespace AssignmentAPI.Migrations
                         {
                             RoomId = "1",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(260),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9190),
                             LevelId = "1",
                             RoomCode = "R-101",
-                            RoomName = "Oscar",
+                            RoomName = "R-101",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(260)
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9190)
                         },
                         new
                         {
                             RoomId = "2",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(270),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9200),
                             LevelId = "2",
                             RoomCode = "R-201",
-                            RoomName = "Hira",
+                            RoomName = "R-101",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(270)
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9200)
                         });
                 });
 
@@ -417,15 +477,15 @@ namespace AssignmentAPI.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "b4f0b488-8487-45bd-b2c0-4316a8e23310",
+                            UserId = "33b09a49-311e-4368-b081-e747dcb91ee0",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(160),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9020),
                             FristName = "Win Ko",
                             LastName = "Htun",
                             Password = "SawMrF4MIPLybRhUuydNLnFedhTP2TqS",
                             PasswordSalt = "17urfIO+0X9aVngltY8OCc7mJXkkFOqz",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(160),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9030),
                             UserName = "admin"
                         });
                 });
@@ -504,7 +564,7 @@ namespace AssignmentAPI.Migrations
                             BuildingId = "1",
                             CompanyName = "TestCompany",
                             CreatedBy = "admin",
-                            CreatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(350),
+                            CreatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9290),
                             Designation = "Test De",
                             FirstName = "win",
                             LastName = "ko Htun",
@@ -513,12 +573,21 @@ namespace AssignmentAPI.Migrations
                             PlateNumber = "5H_000",
                             RoomId = "1",
                             UpdatedBy = "admin",
-                            UpdatedDate = new DateTime(2024, 3, 14, 12, 22, 21, 17, DateTimeKind.Utc).AddTicks(350),
+                            UpdatedDate = new DateTime(2024, 3, 19, 14, 54, 44, 590, DateTimeKind.Utc).AddTicks(9290),
                             isAcknowledged = true,
                             isConfirmed14Day = false,
                             isFever = false,
                             isStayHomeNotice = false
                         });
+                });
+
+            modelBuilder.Entity("AssignmentAPI.Models.CategoryModel", b =>
+                {
+                    b.HasOne("AssignmentAPI.Models.CategoryModel", "ParentCategory")
+                        .WithMany("ChildCategories")
+                        .HasForeignKey("ParentCategoryId");
+
+                    b.Navigation("ParentCategory");
                 });
 
             modelBuilder.Entity("AssignmentAPI.Models.LevelModel", b =>
@@ -570,6 +639,11 @@ namespace AssignmentAPI.Migrations
             modelBuilder.Entity("AssignmentAPI.Models.BuildingModel", b =>
                 {
                     b.Navigation("Levels");
+                });
+
+            modelBuilder.Entity("AssignmentAPI.Models.CategoryModel", b =>
+                {
+                    b.Navigation("ChildCategories");
                 });
 
             modelBuilder.Entity("AssignmentAPI.Models.LevelModel", b =>

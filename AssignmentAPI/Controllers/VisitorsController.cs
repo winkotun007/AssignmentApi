@@ -30,8 +30,7 @@ namespace AssignmentAPI.Controllers
 
         [HttpPost("GetVisitorByID")]
         public async Task<ActionResult<VisitorsModel>> GetVisitorsByID(IDModel iDModel)
-        {
-            /
+        { 
             return await _visitorRepository.GetVisitorsByIdAsync(iDModel.Id);
         }
 

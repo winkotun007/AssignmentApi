@@ -21,7 +21,7 @@ namespace AssignmentAPI.Middleware
         private readonly JsonSerializerSettings _serializerSettings;
         private readonly IConfiguration _configuration;
         private readonly ILogger<CustomMiddleware> _logger;
-        public CustomMiddleware(RequestDelegate next, JsonSerializerSettings serializerSettings,IConfiguration configuration,ILogger<CustomMiddleware> logger)
+        public CustomMiddleware(RequestDelegate next, JsonSerializerSettings serializerSettings, IConfiguration configuration, ILogger<CustomMiddleware> logger)
         {
             _next = next;
             _serializerSettings = new JsonSerializerSettings
@@ -32,10 +32,12 @@ namespace AssignmentAPI.Middleware
             _logger = logger;
         }
 
-        public async Task Invoke(HttpContext httpContext,IGuestAcessRepository guestAcessRepository)
+        public async Task Invoke(HttpContext httpContext, IGuestAcessRepository guestAcessRepository)
         {
             try
             {
+                await _next(httpContext);
+                return;
 
                 if (httpContext.Request.Method == "OPTIONS")
                 {
@@ -54,7 +56,7 @@ namespace AssignmentAPI.Middleware
 
                 if (!string.IsNullOrEmpty(httpContext.Request.Method))
                 {
-                   isTrueAccess= guestAcessRepository.isAccessByPath(httpContext.Request.Path, httpContext.Request.Method).Result;
+                    isTrueAccess = guestAcessRepository.isAccessByPath(httpContext.Request.Path, httpContext.Request.Method).Result;
                 }
 
 
@@ -74,17 +76,17 @@ namespace AssignmentAPI.Middleware
                     await ResponseMessage(new { status = "fail", data = "Token is Something Wrong." }, httpContext, StatusCodes.Status405MethodNotAllowed);
                     return;
                 }
-    
+
                 await _next(httpContext);
                 return;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message.ToString());
-                await ResponseMessage(new { status = "fail", data = "Method Not Allowed"  }, httpContext, StatusCodes.Status405MethodNotAllowed);
+                await ResponseMessage(new { status = "fail", data = "Method Not Allowed" }, httpContext, StatusCodes.Status405MethodNotAllowed);
             }
-           await _next(httpContext);
+            await _next(httpContext);
             return;
         }
 
@@ -144,4 +146,3 @@ namespace AssignmentAPI.Middleware
         }
     }
 }
-

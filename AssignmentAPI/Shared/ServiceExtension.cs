@@ -15,6 +15,7 @@ namespace AssignmentAPI.Shared
             services.AddScoped<IUserRepository,UserRepository>();
             services.AddScoped<IGuestAcessRepository, GuestAccesssRepository>();
             services.AddScoped<IUserIdProvider, UserIdProvider>();
+            services.AddScoped<ICategoryRepository,CategoryRepository>();
             return services;
         }
 

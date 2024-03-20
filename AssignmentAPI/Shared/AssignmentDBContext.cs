@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using AssignmentAPI.Models;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AssignmentAPI.Shared
 {
@@ -18,10 +19,17 @@ namespace AssignmentAPI.Shared
         public  DbSet<VisitorsModel> Visitors { get; set; }
         public  DbSet<UserModel> Users { get; set; }
         public  DbSet<GuestAccessModel> GuestAccess { get; set; }
+        public DbSet<CategoryModel> Category { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<GuestAccessModel>(entity =>
+            modelBuilder.Entity<CategoryModel>(entity =>
+            {
+             entity.HasKey(x => x.CategoryId).HasName("PRIMARY");
+                //entity.HasOne(x => x.ParentCategory).WithMany(x => x.ChildCategories).HasForeignKey(x => x.ParentCategoryId);
+             });
+
+             modelBuilder.Entity<GuestAccessModel>(entity =>
             {
                 entity.HasKey(e => e.GuestAccessId)
                     .HasName("PRIMARY");
@@ -106,8 +114,8 @@ namespace AssignmentAPI.Shared
             );
 
             modelBuilder.Entity<RoomModel>().HasData(
-                new RoomModel { RoomId = "1", RoomCode = "R-101", RoomName = "Oscar" ,LevelId="1"},
-                 new RoomModel { RoomId = "2", RoomCode = "R-201", RoomName = "Hira" ,LevelId="2"}
+                new RoomModel { RoomId = "1", RoomCode = "R-101", RoomName = "R-101", LevelId="1"},
+                 new RoomModel { RoomId = "2", RoomCode = "R-201", RoomName = "R-101", LevelId="2"}
             );
 
             modelBuilder.Entity<GuestAccessModel>().HasData(
@@ -121,13 +129,21 @@ namespace AssignmentAPI.Shared
                 new GuestAccessModel { GuestAccessId = "8", Path = "/api/Building", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
                 new GuestAccessModel { GuestAccessId = "9", Path = "/swagger/v1/swagger.json", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true},
                 new GuestAccessModel { GuestAccessId = "10", Path = "/api/User/UserLogin", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
-                new GuestAccessModel { GuestAccessId = "11", Path = "/api/Levels/GetLevelsByBuilding", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true }
+                new GuestAccessModel { GuestAccessId = "11", Path = "/api/Levels/GetLevelsByBuilding", isGetAccess = true, isPostAccess = true, isPutAccess = true, isDeleteAccess = true },
+                new GuestAccessModel { GuestAccessId= "12" ,Path= "/swagger/swagger-ui.css" ,isGetAccess=true,isPostAccess=true,isPutAccess=true,isDeleteAccess=true },
+                new GuestAccessModel { GuestAccessId= "13" ,Path= "/swagger/swagger-ui-bundle.js" ,isGetAccess=true,isPostAccess=true,isPutAccess=true,isDeleteAccess=true }
                 );
 
             modelBuilder.Entity<VisitorsModel>().HasData(
                 new VisitorsModel { VisitorId="1",FirstName="win" ,LastName="ko Htun",NRICNumber="14/Test" ,PlateNumber="5H_000",CompanyName="TestCompany"
                                     ,Designation= "Test De",BuildingId="1",LevelId="1",RoomId="1",isAcknowledged=true, isConfirmed14Day=false,isFever=false,isStayHomeNotice=false}
                 );
+
+            //modelBuilder.Entity<CategoryModel>().HasData(
+            //    new CategoryModel { CategoryId="1",CategoryCode="1",CategoryName="All Category",ParentCategoryId=""},
+            //    new CategoryModel { CategoryId="2" , CategoryCode = "C-1", CategoryName="Category-1",ParentCategoryId="1"},
+            //    new CategoryModel { CategoryId="3", CategoryCode="C-2",CategoryName="Category-2" ,ParentCategoryId="1"}
+            //    );
 
             base.OnModelCreating(modelBuilder);
         }
